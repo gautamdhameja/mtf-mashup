@@ -1,0 +1,19 @@
+{
+  "name": "mtfbdb",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "start": "node ./bin/www PORT=3001"
+  },
+  "dependencies": {
+    "bigchaindb-driver": "^0.3.0",
+    "bip39": "^2.4.0",
+    "body-parser": "~1.18.2",
+    "concat-stream": "^1.6.0",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "fs-jetpack": "^1.2.0"
+  }
+}
