@@ -10,8 +10,6 @@ namespace mtf_mashup.api.Models
     {
         public string[] Files { get; set; }
 
-        public string Name { get; set; }
-
         public string Email { get; set; }
 
         public string PassPhrase { get; set; }
