@@ -11,6 +11,7 @@ function generateKeypair(passPhrase) {
     return new driver.Ed25519Keypair(seed.slice(0, 32))
 }
 
+// creates an assets by sending a transaction to BigchainDB
 var create = function createTransaction(asset, metadata, passPhrase) {
     return new Promise((resolve, reject) => {
         asset.timestamp = (new Date()).toUTCString()
@@ -36,6 +37,7 @@ var create = function createTransaction(asset, metadata, passPhrase) {
     })
 }
 
+// appends metadata to an asset by self transfer
 var update = function updateTransaction(tx, metadata, passPhrase) {
     return new Promise((resolve, reject) => {
         var keypair = generateKeypair(passPhrase)
@@ -59,4 +61,16 @@ var update = function updateTransaction(tx, metadata, passPhrase) {
     })
 }
 
-module.exports = { create, update }
+// searches for assets where 'mtfperflab' appears
+var search = function getAllAssets() {
+    return new Promise((resolve, reject) => {
+        conn.searchAssets('mtfperflab').then((results) => {
+            results = results.map(e => e.asset.data)
+            resolve(results)
+        }).catch((err) => {
+            reject(err)
+        })
+    })
+}
+
+module.exports = { create, update, search }

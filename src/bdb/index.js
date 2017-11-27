@@ -24,4 +24,16 @@ router.post('/assets', function (req, res, next) {
   }
 });
 
+router.get('/assets', function (req, res, next) {
+  bdb.search()
+  .then((txs) => {
+    res.status = 200
+    res.send(txs)
+  })
+  .catch((err) => {
+    res.status = 500
+    res.send(err)
+  })
+});
+
 module.exports = router;
