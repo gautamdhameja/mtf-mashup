@@ -182,6 +182,7 @@
     <Compile Include="Models\Asset.cs" />
     <Compile Include="Models\BdbRequest.cs" />
     <Compile Include="Models\MashupRequest.cs" />
+    <Compile Include="Models\Selection.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\StorageService.cs" />

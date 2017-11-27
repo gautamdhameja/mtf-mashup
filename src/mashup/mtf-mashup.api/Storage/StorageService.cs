@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Storage; 
+﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage.Table;
+using mtf_mashup.api.Models;
+using Newtonsoft.Json;
+using System;
 using System.Configuration;
+using System.Threading.Tasks;
 
 namespace mtf_mashup.api.Storage
 {
@@ -37,7 +35,7 @@ namespace mtf_mashup.api.Storage
 
                 return blockBlob.StorageUri.PrimaryUri.ToString();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 // TODO: handle exception
                 throw;
@@ -68,6 +66,46 @@ namespace mtf_mashup.api.Storage
             {
                 // TODO: handle exception
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Saves selections in the table storage
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public static async Task SaveSelection(MashupRequest request)
+        {
+            try
+            {
+                // TODO: extract utility method to read config
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                ConfigurationManager.AppSettings["StorageConnectionString"]);
+
+                // Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+                // Retrieve a reference to the table.
+                CloudTable table = tableClient.GetTableReference("selections");
+
+                // Create the table if it doesn't exist.
+                await table.CreateIfNotExistsAsync();
+
+                var selection = new Selection(request.Email, request.Email)
+                {
+                    Files = JsonConvert.SerializeObject(request.Files)
+                };
+
+                // Create the TableOperation object that inserts the customer entity.
+                TableOperation insertOperation = TableOperation.Insert(selection);
+
+                // Execute the insert operation.
+                var tableResult = await table.ExecuteAsync(insertOperation);
+            }
+            catch (Exception)
+            {
+                // TODO: handle exception
+                throw;
             }
         }
     }
