@@ -1,12 +1,9 @@
 ﻿using NAudio.Lame;
 using NAudio.Wave;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace mtf_mashup.api.Audio
 {
@@ -31,7 +28,7 @@ namespace mtf_mashup.api.Audio
                     AutoStop = true
                 };
 
-                var outputFile = Path.Combine(Path.GetTempPath(), ConfigurationManager.AppSettings["AudienceDirName"], (new Random(1000)).Next() + ".mp3");
+                var outputFile = Path.Combine(Path.GetTempPath(), ConfigurationManager.AppSettings["AudienceDirName"], Guid.NewGuid().ToString() + ".mp3");
 
                 foreach (var file in files)
                 {
@@ -49,6 +46,8 @@ namespace mtf_mashup.api.Audio
                 var wave32 = new Wave32To16Stream(mixer);
                 var mp3Writer = new LameMP3FileWriter(outputFile, wave32.WaveFormat, 128);
                 wave32.CopyTo(mp3Writer);
+                wave32.Close();
+                mp3Writer.Close();
                 return outputFile;
             }
             catch(Exception)

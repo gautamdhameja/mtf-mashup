@@ -18,7 +18,7 @@ namespace mtf_mashup.api.Storage
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static async Task<bool> UploadAsync(string filePath, string containerName, string blobName)
+        public static async Task<string> UploadAsync(string filePath, string containerName, string blobName)
         {
             try
             {
@@ -32,15 +32,15 @@ namespace mtf_mashup.api.Storage
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
                 using (var fileStream = System.IO.File.OpenRead(filePath))
                 {
-                    blockBlob.UploadFromStream(fileStream);
+                    await blockBlob.UploadFromStreamAsync(fileStream);
                 }
 
-                return true;
+                return blockBlob.StorageUri.PrimaryUri.ToString();
             }
             catch(Exception ex)
             {
                 // TODO: handle exception
-                return false;
+                throw;
             }          
         }
 
