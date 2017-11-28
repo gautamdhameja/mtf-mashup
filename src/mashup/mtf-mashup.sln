@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mtf-mashup.api", "mtf-mashup.api\mtf-mashup.api.csproj", "{FE679CA6-597C-4F48-B430-18BDA2957B79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mtf-mashup.generator", "mtf-mashup.generator\mtf-mashup.generator.csproj", "{3E7DA04F-8046-4CF2-9242-CE8700D347AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FE679CA6-597C-4F48-B430-18BDA2957B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE679CA6-597C-4F48-B430-18BDA2957B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE679CA6-597C-4F48-B430-18BDA2957B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E7DA04F-8046-4CF2-9242-CE8700D347AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E7DA04F-8046-4CF2-9242-CE8700D347AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E7DA04F-8046-4CF2-9242-CE8700D347AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E7DA04F-8046-4CF2-9242-CE8700D347AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
