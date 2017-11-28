@@ -1,4 +1,3 @@
-import { push } from 'react-router-redux'
 import bip39 from 'bip39'
 import * as api from '../api'
 
@@ -12,18 +11,16 @@ export function generateMnemonic() {
 export function setSeed(values) {
     localStorage.setItem('seed', values.seed)
     return function (dispatch, getState) {
-        const keypair = api.keypair(values.seed)
         dispatch({
-            type: 'SET_KEYPAIR',
+            type: 'SET_USER',
             passPhrase: values.seed,
-            publicKey: keypair.publicKey,
-            privateKey: keypair.privateKey,
             email: values.email
         })
     }
 }
 
 export function submitSelections(seed, email, selections) {
+    console.log(seed, email, selections)
     return function (dispatch, getState) {
         api.addOffer(seed, email, selections)
             .then(tx => {

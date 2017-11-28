@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "bigchaindb-driver": "^0.3.0",
+    "bigchaindb-driver": "^3.1.1",
     "bip39": "^2.3.0",
     "history": "^4.7.2",
     "marked": "^0.3.6",
     "prop-types": "^15.5.8",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-notifications": "^1.4.3",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.7",
@@ -19,12 +20,12 @@
     "redux-thunk": "^2.2.0",
     "safe-access": "^0.1.0",
     "semantic-ui-css": "^2.2.10",
-    "semantic-ui-react": "^0.75.1",
+    "semantic-ui-react": "^0.77.0",
     "superagent": "^3.8.0",
     "superagent-jsonapify": "^1.4.5"
   },
   "devDependencies": {
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.17"
   },
   "scripts": {
     "start": "react-scripts start",

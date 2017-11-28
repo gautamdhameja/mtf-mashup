@@ -25,6 +25,8 @@ export const addOffer = (seed, emailaddr, selections) => {
             })
             .end((err, resp) => {
                 if (resp && resp.body) {
+                    console.log(resp)
+                    console.log(err)
                     resolve(resp.body)
                 } else {
                     resolve({})

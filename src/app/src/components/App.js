@@ -6,9 +6,9 @@ import DashboardLoader from '../containers/DashboardLoader'
 
 const App = () => (
     <div>
-        <Route path="/" component={WalletLoader} />
+        <Route exact path="/" component={WalletLoader} />
         <Container>
-            <Route path="/dashboard" component={DashboardLoader} />
+            <Route exact path="/dashboard" component={DashboardLoader} />
         </Container>
     </div>
 )

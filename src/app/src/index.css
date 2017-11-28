@@ -5,6 +5,8 @@ body {
 }
 
 .full-page {
+    background: url("slush-music-bg") no-repeat center center fixed;
+    background-size: cover;
     height: 100vh;
     padding: 10% 0 10px;
 }
@@ -13,12 +15,12 @@ body {
     margin: 0 auto;
     padding: 50px 10%;
     color: white;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
 }
 
 .full-page .main p {
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .full-page .ui.form .field > label {
@@ -31,4 +33,8 @@ body {
 
 .ui.secondary.pointing.menu .item {
     color: white !important;
+}
+
+.auditHeader {
+    color: rgb(15, 54, 160);
 }

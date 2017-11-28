@@ -39,7 +39,6 @@ render(
 function boot() {
     const seed = localStorage.getItem('seed')
     if (seed) {
-        console.log(seed)
         store.dispatch(setSeed(seed))
     }
 }

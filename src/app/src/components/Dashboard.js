@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import { Button, Icon, Item, Label, Rating, Checkbox } from 'semantic-ui-react'
+import { Button, Icon, Item, Label, Rating, Checkbox, Message } from 'semantic-ui-react'
 import marked from 'marked'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const DashboardItem = ({ artists, id, track, description, onClick }) => (
     <Item>
         <Item.Image>
-            <Icon name="info" size="large" />
+            <Icon size="huge" color="blue" name="music" />
         </Item.Image>
 
         <Item.Content>
@@ -28,8 +30,11 @@ DashboardItem.propTypes = {
 }
 
 class Dashboard extends Component {
-    getHistory() {
-        this.props.onSubmit(this.props.seed, this.props.email, this.props.selections)
+    mashup() {
+        var tracks = [...this.props.selections]
+        this.props.selections.splice(0, this.props.selections.length)
+        this.props.onSubmit(this.props.seed, this.props.email, tracks)
+        NotificationManager.success('Your selection has been submitted!', 'Thanks!');
     }
 
     itemClicked(track) {
@@ -40,17 +45,20 @@ class Dashboard extends Component {
         const { data } = this.props
         return (
             <div>
-                <h3>Tracks</h3>
+                <br /><br />
+                <h2>Tracks</h2>
                 <hr />
-                <Button primary floated='right' onClick={() => this.getHistory()}>
-                    Mashup
-                    <Icon name='right chevron' />
-                </Button>
                 <br /><br /><br />
                 <Item.Group divided className="results">
                     {data.map(element => <DashboardItem key={element.track} {...element} onClick={() => this.itemClicked(element.track)} />)}
                 </Item.Group>
-                <br /><br /><br />
+                <br />
+                <hr />
+                <Button primary floated='right' onClick={() => this.mashup()}>
+                    Mashup
+                    <Icon name='right chevron' />
+                </Button>
+                <NotificationContainer />
             </div>
         )
     }
