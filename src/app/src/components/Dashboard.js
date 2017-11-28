@@ -31,10 +31,15 @@ DashboardItem.propTypes = {
 
 class Dashboard extends Component {
     mashup() {
-        var tracks = [...this.props.selections]
-        this.props.selections.splice(0, this.props.selections.length)
-        this.props.onSubmit(this.props.seed, this.props.email, tracks)
-        NotificationManager.success('Your selection has been submitted!', 'Thanks!');
+        if(this.props.selections.length < 2) {
+            NotificationManager.warning('Please select at least 2 tracks.', 'Error!', 3000);
+        }
+        else{
+            var tracks = [...this.props.selections]
+            this.props.selections.splice(0, this.props.selections.length)
+            this.props.onSubmit(this.props.seed, this.props.email, tracks)
+            NotificationManager.success('Your selection has been submitted!', 'Thanks!');
+        }
     }
 
     itemClicked(track) {
@@ -45,7 +50,7 @@ class Dashboard extends Component {
         const { data } = this.props
         return (
             <div>
-                <br /><br />
+                <br />
                 <h2>Tracks</h2>
                 <hr />
                 <br /><br /><br />
@@ -58,6 +63,7 @@ class Dashboard extends Component {
                     Mashup
                     <Icon name='right chevron' />
                 </Button>
+                <br /><br />
                 <NotificationContainer />
             </div>
         )

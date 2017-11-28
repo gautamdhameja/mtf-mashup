@@ -8,12 +8,13 @@ body {
     background: url("slush-music-bg") no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
-    padding: 10% 0 10px;
 }
 
 .full-page .main {
     margin: 0 auto;
-    padding: 50px 10%;
+    padding-top: 10%;
+    padding-right: 10%; 
+    padding-left: 10%;
     color: white;
     background: rgba(0, 0, 0, 0);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
@@ -37,4 +38,8 @@ body {
 
 .auditHeader {
     color: rgb(15, 54, 160);
+}
+
+.homeform {
+    margin-top: 100px;
 }
