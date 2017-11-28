@@ -49,11 +49,11 @@ class Dashboard extends Component {
     render() {
         const { data } = this.props
         return (
-            <div>
+            <div className="list">
                 <br />
                 <h2>Tracks</h2>
                 <hr />
-                <br /><br /><br />
+                <br />
                 <Item.Group divided className="results">
                     {data.map(element => <DashboardItem key={element.track} {...element} onClick={() => this.itemClicked(element.track)} />)}
                 </Item.Group>
@@ -63,7 +63,6 @@ class Dashboard extends Component {
                     Mashup
                     <Icon name='right chevron' />
                 </Button>
-                <br /><br />
                 <NotificationContainer />
             </div>
         )
