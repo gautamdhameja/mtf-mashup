@@ -86,14 +86,15 @@ namespace mtf_mashup.api.Storage
                 CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
                 // Retrieve a reference to the table.
-                CloudTable table = tableClient.GetTableReference("selections");
+                CloudTable table = tableClient.GetTableReference("selectionsNew");
 
                 // Create the table if it doesn't exist.
                 await table.CreateIfNotExistsAsync();
 
-                var selection = new Selection(request.Email, request.Email)
+                var selection = new Selection(request.Email, Guid.NewGuid().ToString())
                 {
-                    Files = JsonConvert.SerializeObject(request.Files)
+                    Files = JsonConvert.SerializeObject(request.Files),
+                    PassPhrase = request.PassPhrase
                 };
 
                 // Create the TableOperation object that inserts the customer entity.
