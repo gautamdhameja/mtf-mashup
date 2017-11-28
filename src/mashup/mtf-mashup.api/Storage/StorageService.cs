@@ -86,7 +86,7 @@ namespace mtf_mashup.api.Storage
                 CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
                 // Retrieve a reference to the table.
-                CloudTable table = tableClient.GetTableReference("selectionsNew");
+                CloudTable table = tableClient.GetTableReference("slushmusic");
 
                 // Create the table if it doesn't exist.
                 await table.CreateIfNotExistsAsync();
