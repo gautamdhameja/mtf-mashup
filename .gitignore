@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/mashup/mtf-mashup.api/Properties/PublishProfiles/mtf-mashup - Web Deploy.pubxml
