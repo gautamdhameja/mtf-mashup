@@ -15,7 +15,10 @@ namespace mtf_mashup.api.Controllers
         [HttpPost]
         public async Task<string> Mashup([FromBody] MashupRequest request)
         {
+            // create mashup
             var mashedUp = Audio.AudioService.CreateMashup(request.Files);
+
+            // upload to azure blog storage and get blob uri
             var assetUrl = await Storage.StorageService.UploadAsync(mashedUp, "audience", Path.GetFileName(mashedUp));
             var asset = new Asset
             {
@@ -23,6 +26,7 @@ namespace mtf_mashup.api.Controllers
                 Link = assetUrl
             };
 
+            // save asset in BigchainDB
             return await BigchainDB.BdbService.RegisterMusicAsset(request.PassPhrase, asset);
         }
 
