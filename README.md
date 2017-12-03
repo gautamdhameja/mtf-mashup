@@ -3,7 +3,8 @@ Music Tech Fest - Perfomance Lab blockchain demo for Slush 2017
 
 ## The Project
 
-This project is a simple demo of registering music creations, from artists and engineers participating in the Music Tech Fest Performance Lab in Helsinki (Nov. 2017), on the BigchainDB blockchain. Then the audience can mashup these to create their own music creations using an app and can register that on Blockchain, giving proper attribution to artists.
+This project is a simple demo of registering music creations on BigchainDB blockchain.
+It was created by artists and engineers participating in the Music Tech Fest #MTFLabs in Helsinki (25-28 Nov. 2017).
 
 ## The Components
 
@@ -59,12 +60,25 @@ A node.js express API for interacting with BigchainDB to create transactions on 
 
 The web app connects with these 2 APIs directly to get the assets and to create mashups.
 
+### Functionality
+
+The input files were tracks created by artists participating at the #MTFLabs and they were pre-uploaded in the temp folder in the API app. The  .Net API method picked up these tracks from the temp folder, merged them together and returned the path of the mashed up file saved in a temp folder.
+
+The selection of tracks was made by the live audience using a simple React-Redux based frontend app sending the selections to the API.
+
 ### Infrastructure
 
 The solution has the following infrastructure components,
 
-* Web App is deployed on Azure App Service
+* Web App is deployed using docker on a Azure VM
 * .Net API is Azure API App
-* Music repository is on Azure Storage Account
+* Music repository is on Azure Blob Storage
 * BigchainDB node is hosted on docker on a Azure VM
 * Node.js API is also on docker on the same Azure VM
+
+### Configuration
+
+* For .Net API the configuration is in the `web.config` `AppSettings` section.
+* For the node.js API the configuration is in the `env.json` file.
+
+Note: All configuration settings related to cloud endpoints have been changed to empty strings in this public repository.
